@@ -1,6 +1,7 @@
 # 🛡️ MiniFIM - File Integrity Monitor
 
-<img width="943" height="730" alt="image" src="https://github.com/user-attachments/assets/0b48a21f-d919-46f9-818c-8d7c1d14c1e1" />
+<img width="943" height="727" alt="image" src="https://github.com/user-attachments/assets/7049ce63-02ca-4b9f-ada7-6c5c5ced2e24" />
+
 
 A lightweight File Integrity Monitoring (FIM) tool built with Python that tracks changes in files and detects unauthorized modifications, creations, and deletions in real time.
 
