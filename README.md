@@ -85,7 +85,7 @@ Try these to see alerts in action:
 
 You can adjust monitoring behavior in the code:
 
-```python
+```pytho
 time.sleep(3)  # Scan interval (seconds)
 ```
 
