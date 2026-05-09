@@ -1,49 +1,42 @@
-# 🛡️ MiniFIM - File Integrity Monitor
+# 🛡️ MiniFIM — File Integrity Monitor
 
-<img width="943" height="727" alt="image" src="https://github.com/user-attachments/assets/7049ce63-02ca-4b9f-ada7-6c5c5ced2e24" />
-
-
-A lightweight File Integrity Monitoring (FIM) tool built with Python that tracks changes in files and detects unauthorized modifications, creations, and deletions in real time.
+A modern, dark-themed File Integrity Monitoring (FIM) tool built with Python and CustomTkinter. Tracks file changes in real time and detects unauthorized modifications, creations, and deletions with a premium security-dashboard UI.
 
 ---
 
 ## 🚀 Features
 
-* 📂 Monitor any selected directory
-* 🔐 SHA-256 hashing for file integrity verification
-* ⚠️ Detects:
-
-  * File creation
-  * File modification
-  * File deletion
-* 🖥️ Simple GUI built with Tkinter
-* 📝 Real-time logging of alerts
-* 💾 Baseline storage using JSON
-
----
-
-## 🧠 How It Works
-
-MiniFIM creates a **baseline snapshot** of all files in a selected directory using SHA-256 hashes.
-
-It then continuously scans the directory and compares current file states against the baseline:
-
-* **New File** → 🚨 Alert triggered
-* **Modified File** → 🚨 Alert triggered
-* **Deleted File** → 🚨 Alert triggered
-
-Example:
-
-If a file’s content changes (even slightly), its hash changes → detected immediately.
+* 🌑 **Dark Mode UI** — Sleek, modern interface built with CustomTkinter
+* 📊 **Live Dashboard** — Real-time stats: files monitored, changes detected, scan interval, uptime
+* 📂 **Directory Monitoring** — Monitor any folder with SHA-256 integrity verification
+* 🎨 **Color-Coded Alerts** — INFO (cyan), WARNING (yellow), CRITICAL (red) severity levels
+* ⚠️ **Detects:**
+  * 🟡 File creation (WARNING)
+  * 🟡 File modification (WARNING)
+  * 🔴 File deletion (CRITICAL)
+* 📋 **Baseline Viewer** — Browse all tracked files and their SHA-256 hashes
+* ⚙️ **Configurable Settings:**
+  * Adjustable scan interval (1–60 seconds)
+  * File exclusion patterns (glob-based)
+  * Desktop notification toggle
+* 📤 **CSV Export** — Export all logs to CSV for reporting
+* 🔔 **Desktop Notifications** — Toast alerts for critical file events
+* 🟢 **Animated Status Indicator** — Pulsing dot shows monitoring state
+* 📝 **Persistent Logging** — All alerts saved to `fim_alerts.log`
+* ⚡ **Parallel File Hashing** — Multi-threaded SHA-256 hashing (8 workers) for fast baseline building on large directories
+* 🧭 **Bold Sidebar Navigation** — Large, prominent navigation buttons for Monitor, Baseline, and Settings views
 
 ---
 
-## 📸 Interface Overview
+## 📸 Interface
 
-* Select folder to monitor
-* Start/Stop monitoring
-* Real-time integrity logs
-* Status indicator
+The app features a sidebar navigation with three views:
+
+| View | Description |
+|------|-------------|
+| 📊 **Monitor** | Main dashboard with live stats, controls, and color-coded log |
+| 📋 **Baseline** | Table of all monitored files with their SHA-256 hashes and sizes |
+| ⚙️ **Settings** | Scan interval slider, exclusion patterns, notification toggle |
 
 ---
 
@@ -56,7 +49,13 @@ git clone https://github.com/yourusername/MiniFIM.git
 cd MiniFIM
 ```
 
-### 2. Run the program
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the program
 
 ```bash
 python main.py
@@ -66,8 +65,27 @@ python main.py
 
 ## ⚠️ Requirements
 
-* Python 3.x
-* No external dependencies (uses standard library only)
+* Python 3.8+
+* `customtkinter` — Modern dark-themed UI widgets
+* `plyer` — Cross-platform desktop notifications (optional, graceful fallback)
+
+---
+
+## 📁 Project Structure
+
+```
+MiniFIM/
+├── main.py              # Entry point
+├── app.py               # Main GUI application (CustomTkinter)
+├── monitor.py           # File monitoring engine
+├── notifier.py          # Desktop notification logic
+├── utils.py             # Hashing, CSV export, file utilities
+├── theme.py             # Color palette, fonts, style constants
+├── requirements.txt     # Python dependencies
+├── fim_baseline.json    # Baseline data (auto-generated)
+├── fim_alerts.log       # Alert log (auto-generated)
+└── README.md
+```
 
 ---
 
@@ -75,18 +93,33 @@ python main.py
 
 Try these to see alerts in action:
 
-* Create a new file inside the monitored folder → 🚨
-* Edit an existing file → 🚨
-* Delete a file → 🚨
+* Create a new file inside the monitored folder → 🟡 WARNING
+* Edit an existing file → 🟡 WARNING
+* Delete a file → 🔴 CRITICAL
+
+---
+
+## ⚡ Performance
+
+MiniFIM uses **multi-threaded parallel hashing** via Python's `ThreadPoolExecutor` with 8 concurrent workers. Instead of hashing files one-by-one, all files in the monitored directory are hashed simultaneously, making baseline creation and scan cycles significantly faster — especially on directories with hundreds or thousands of files.
 
 ---
 
 ## ⚙️ Configuration
 
-You can adjust monitoring behavior in the code:
-
+### Scan Interval
+Adjust in the Settings panel (1–60 seconds slider) or in code:
 ```python
-time.sleep(3)  # Scan interval (seconds)
+monitor.set_scan_interval(5)  # seconds
+```
+
+### Exclusion Patterns
+Add glob patterns in Settings to ignore files:
+```
+*.tmp
+*.log
+__pycache__/*
+.git/*
 ```
 
 ---
@@ -95,7 +128,5 @@ time.sleep(3)  # Scan interval (seconds)
 
 This tool is intended for **educational and defensive security purposes only**.
 Do not use it for unauthorized monitoring of systems you do not own or have permission to analyze.
-
-
 
 ---

@@ -1,0 +1,64 @@
+BG_PRIMARY = "#0d1117"
+BG_SECONDARY = "#161b22"
+BG_TERTIARY = "#21262d"
+BG_CARD = "#1c2333"
+BORDER = "#30363d"
+
+ACCENT_CYAN = "#58a6ff"
+ACCENT_GREEN = "#3fb950"
+ACCENT_YELLOW = "#d29922"
+ACCENT_RED = "#f85149"
+ACCENT_ORANGE = "#db6d28"
+ACCENT_PURPLE = "#bc8cff"
+
+TEXT_PRIMARY = "#e6edf3"
+TEXT_SECONDARY = "#8b949e"
+TEXT_MUTED = "#484f58"
+
+STATUS_ACTIVE = "#3fb950"
+STATUS_INACTIVE = "#f85149"
+STATUS_PULSE_GLOW = "#238636"
+
+FONT_FAMILY = "Segoe UI"
+FONT_MONO = "Cascadia Code"
+
+FONT_TITLE = (FONT_FAMILY, 20, "bold")
+FONT_HEADING = (FONT_FAMILY, 14, "bold")
+FONT_BODY = (FONT_FAMILY, 12)
+FONT_BODY_BOLD = (FONT_FAMILY, 12, "bold")
+FONT_SMALL = (FONT_FAMILY, 10)
+FONT_TINY = (FONT_FAMILY, 9)
+FONT_LOG = (FONT_MONO, 10)
+FONT_STAT_VALUE = (FONT_FAMILY, 24, "bold")
+FONT_STAT_LABEL = (FONT_FAMILY, 10)
+FONT_BUTTON = (FONT_FAMILY, 12, "bold")
+
+WINDOW_WIDTH = 1100
+WINDOW_HEIGHT = 720
+SIDEBAR_WIDTH = 220
+CARD_CORNER_RADIUS = 12
+BUTTON_CORNER_RADIUS = 8
+BUTTON_HEIGHT = 38
+
+SEVERITY_COLORS = {
+    "INFO": ACCENT_CYAN,
+    "WARNING": ACCENT_YELLOW,
+    "CRITICAL": ACCENT_RED,
+}
+
+SEVERITY_ICONS = {
+    "INFO": "ℹ️",
+    "WARNING": "⚠️",
+    "CRITICAL": "🚨",
+}
+
+EVENT_SEVERITY = {
+    "file_created": "WARNING",
+    "file_modified": "WARNING",
+    "file_deleted": "CRITICAL",
+    "baseline_built": "INFO",
+    "monitoring_started": "INFO",
+    "monitoring_stopped": "INFO",
+    "scan_complete": "INFO",
+    "general": "INFO",
+}
