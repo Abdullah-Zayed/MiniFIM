@@ -3,6 +3,8 @@
 A modern, dark-themed File Integrity Monitoring (FIM) tool built with Python and CustomTkinter. Tracks file changes in real time and detects unauthorized modifications, creations, and deletions with a premium security-dashboard UI.
 
 ---
+<img width="1061" height="728" alt="image" src="https://github.com/user-attachments/assets/57828ec1-bcb3-429a-8cf5-4c40883ba0d7" />
+
 
 ## 🚀 Features
 
